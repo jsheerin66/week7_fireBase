@@ -21,15 +21,74 @@
 
 <body>
 
-<!--  java script -->
+    <div class="container-fluid">
 
-  <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+        <div class="jumbotron">
+            <h1 class="panel-heading">CRAZY TRAIN Express!!!</h1>
 
-  <script type="text/javascript" src= "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"></script>
+        </div>
+
+        <div class="panel-title text-center">
+            <h2>CRAZY TRAIN: ALL ABOARD!!!</h2>
+        </div>
+
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <th>crazyTrainName</th>
+                    <th>finalStop</th>
+                    <th>frequency(min)</th>
+                    <th>nextDeparture</th>
+                    <th>minutesAway</th>
+                </thead>
+                <tbody id="tableBody">
+                    //insert data here
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title text-center">
+              <h3>addTrain</h3>
+            </div>
+        </div>
+    <div class="panel-body">
+      <form>
+        <label>crazyTrainName</label>
+        <input type="text" placeholder="enterTrainName" name="name" class="form-control" aria-label="name" id="trainName">
+        <br>
+        <label>finalStop</label>
+        <input type="text" placeholder="Enter your final stop" name= "finalStop" class="form-control"
+        aria-label="email"
+        id="destination">
+        <br>
+        <label>Train Time Time (HH:mm - military time)</label>
+        <input type="text" placeholder= "The train will arrive: " name="trainTime" class="form-control"
+        aria-label="Phone Number"
+        id="startTime">
+<br>
+<label>Frequency</label>
+<input type="text" placeholder="Train arrives every" name="frequencyOfTravel" class="form-control" aria-label="bleh" id="frequency">
+
+<br>
+<button type="button" class="btn btn-info" id="submitTrain">Submit</button>
+
+      </form>
+    </div>
 
 
-  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-<script type="text/javascript" src="http://momentjs.com/downloads/moment.js"></script>
+    </div>
+    <!--  java script -->
+
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="http://momentjs.com/downloads/moment.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/javascript/index.js"></script>
