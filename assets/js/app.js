@@ -10,13 +10,13 @@ $(document).on("ready", function() {
     };
     firebase.initializeApp(config);
 
-    var database = firebase.database();
+    var trainData = firebase.database();
 
-    $("submitTrain").on("click", function() {
+    $("#submitTrain").on("click", function() {
 
         var trainName = $("#trainName").val().trim();
         var destination = $("#destination").val().trim();
-        var startTime = $("#startTime").val().trim();
+        var startTime = moment($("#startTime").val().trim(), "HH:mm").subtract(10, "years").format("X");
         var frequency = $("#frequency").val().trim();
 
         var newTrain = {
@@ -31,14 +31,13 @@ $(document).on("ready", function() {
 
         console.log(newTrain.name)
         console.log(newTrain.destination)
-        console.log(newTrain.firstTrain)
         console.log(startTime)
         console.log(newTrain.frequency)
 
         $("#trainName").empty();
         $("#destination").empty();
         $("#startTime").empty();
-        $("frequency").empty();
+        $("#frequency").empty();
 
         return false;
 
@@ -51,13 +50,13 @@ $(document).on("ready", function() {
 
         var trainNameAppend = childSnapshot.val().name
         var destinationAppend = childSnapshot.val().destination
-        var firstTrainAppend = childSnapshot.val().firstTrain
         var frequencyAppend = childSnapshot.val().frequency
+        var firstTrainAppend = childSnapshot.val().firstTrain
 
-        var timeDifference = moment().diff(moment.unix(timeFirstTrain), "minutes");
+        var timeDifference = moment().diff(moment.unix(firstTrainAppend), "minutes");
 
-        var remainingTime = moment().diff(moment.unix(timeFirstTrain), "minutes") % frequencyAppend;
-        var timeMinutes = frequencyAppend - rainingTime;
+        var remainingTime = moment().diff(moment.unix(firstTrainAppend), "minutes") % frequencyAppend;
+        var timeMinutes = frequencyAppend - remainingTime;
 
 
         var arrivalTime = moment().add(timeMinutes, "m").format("hh:mm A");
@@ -65,7 +64,8 @@ $(document).on("ready", function() {
         console.log(timeMinutes)
 
         console.log(moment().format("hh:mm A"))
-        console.log(momonet().format("X"))
+        console.log(arrivalTime);
+        console.log(moment().format("X"))
 
         $("#tableBody").append("<tr><td>" + trainNameAppend + "</td><td>" + destinationAppend + "</td><td>" + firstTrainAppend +  "</td><td>" + arrivalTime + "</td><td>" + timeMinutes + "</td></tr>")
 
